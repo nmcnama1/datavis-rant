@@ -1,0 +1,13 @@
+user_id,user_gender,user_location,tweet_id,tweet_text,user_polarity_score,user_sentiment_score
+1,F,a,1,text_1,0.1,0.55
+1,F,a,2,text_2,0.1,0.55
+1,F,a,3,text_3,0.1,0.55
+2,M,b,4,text_4,-0.8,0.01
+2,M,b,5,text_5,-0.8,0.01
+3,M,c,6,text_6,0.56,-0.24
+3,M,c,7,text_7,0.56,-0.24
+3,M,c,8,text_8,0.56,-0.24
+3,M,c,9,text_9,0.56,-0.24
+4,F,a,10,text_10,-1,0.76
+4,F,a,11,text_11,-1,0.76
+4,F,a,12,text_12,-1,0.76
