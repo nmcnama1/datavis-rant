@@ -1,0 +1,57 @@
+[
+    {
+        "user_polarity_score": -1.0,
+        "user_id": 310968310,
+        "tweets": [{"tweet_polarity_score": 0, "tweet_text": "rt @elnuevoherald: la pesada sombra de las farc (caricatura) #colombia #firmadelapaznhttps://t.co/8m8cnftizp https://t.co/8epinxswqg", "tweet_sentiment_score": -1, "tweet_id": 780872419661578240, "tweet_timestamp": "2016-09-27", "tweet_hashtag": ["colombia", "firmadelapaz"]}, {"tweet_polarity_score": 0, "tweet_text": "@el_pais @carlosecue @elpais_inter bueno ahora #colombia estu00e1 en proceso de paz , se debe estar retorciendo #pabloescobar con el hijo q tuvo", "tweet_sentiment_score": -1, "tweet_id": 781217480588963840, "tweet_timestamp": "2016-09-28", "tweet_hashtag": ["colombia", "pabloescobar"]}, {"tweet_polarity_score": 0, "tweet_text": "rt @alvarohprada: si las farc tienen una fortuna de billones, u00bfpor quu00e9 el estado debe financiar su partido polu00edtico? #porlapazvotono https:u2026", "tweet_sentiment_score": 1, "tweet_id": 782245673659883521, "tweet_timestamp": "2016-10-01", "tweet_hashtag": ["porlapazvotono"]}],
+        "user_location": "None",
+        "user_retweet_count": 4,
+        "user_follower_count": 736,
+        "user_sentiment_score": -0.5348253960767946,
+        "user_friends_count": 676,
+        "user_gender": "Female"
+    },
+    {
+        "user_polarity_score": -1.0,
+        "user_id": 1118076920,
+        "tweets": [{"tweet_polarity_score": 0, "tweet_text": "rt @dcabralescast: nuestros hijos merecen una colombia libre, el acuerdo ilegu00edtimo farc-santos solo genera mu00e1s violencia #unidosporelno httu2026", "tweet_sentiment_score": 0, "tweet_id": 776615933569798144, "tweet_timestamp": "2016-09-16", "tweet_hashtag": ["unidosporelno"]}],
+        "user_location": "None",
+        "user_retweet_count": 2,
+        "user_follower_count": 92,
+        "user_sentiment_score": 0.9376912529998898,
+        "user_friends_count": 266,
+        "user_gender": "Female"
+    },
+    {
+        "user_polarity_score": 1.0,
+        "user_id": 861634554,
+        "tweets": [{"tweet_polarity_score": 1, "tweet_text": "rt @irene_montero_: ademu00e1s de la actualidad espau00f1ola, buena conversaciu00f3n con @radiocable sobre la firma de la paz en colombia #iglesiasenlau2026", "tweet_sentiment_score": 1, "tweet_id": 780400656226148354, "tweet_timestamp": "2016-09-26", "tweet_hashtag": ["iglesiasenla"]}],
+        "user_location": "None",
+        "user_retweet_count": 6,
+        "user_follower_count": 2665,
+        "user_sentiment_score": 0.40504718862152544,
+        "user_friends_count": 4054,
+        "user_gender": "Male"
+    },
+    {
+        "user_polarity_score": 1.0,
+        "user_id": 527040507,
+        "tweets": [{"tweet_polarity_score": 1, "tweet_text": "rt @ecotalvora: para malestar d gobiernos castrochavistas, #santos lo invitu00f3 y presidente #brasil aceptu00f3 asistir a firma acuerdo santos-faru2026", "tweet_sentiment_score": 0, "tweet_id": 778664266337484800, "tweet_timestamp": "2016-09-21", "tweet_hashtag": ["santos", "brasil"]}],
+        "user_location": "None",
+        "user_retweet_count": 3,
+        "user_follower_count": 155,
+        "user_sentiment_score": 0.6350743610677401,
+        "user_friends_count": 70,
+        "user_gender": "Male"
+    },
+    {
+        "user_polarity_score": 1.0,
+        "user_id": 2584641533,
+        "tweets": [{"tweet_polarity_score": 1, "tweet_text": "rt @anamarcelloana: hoy sonreu00edmos por el proceso de paz alcanzado en colombia  #sialapaz https://t.co/tyccz7wht1", "tweet_sentiment_score": 0, "tweet_id": 780461441715437572, "tweet_timestamp": "2016-09-26", "tweet_hashtag": ["sialapaz"]}],
+        "user_location": "Spain",
+        "user_retweet_count": 1,
+        "user_follower_count": 491,
+        "user_sentiment_score": -0.037366204584113216,
+        "user_friends_count": 566,
+        "user_gender": "Female"
+    }
+]
