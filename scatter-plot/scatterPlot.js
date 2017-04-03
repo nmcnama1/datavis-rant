@@ -29,7 +29,7 @@ function ScatterPlot(){
     .outerTickSize(0);
   var xTicks = 5;
 
-  var yAxis = d3.svg.axis().scale(yScale).orient("left")
+  var yAxis = d3.svg.axis().scale(yScale).orient("right")
     .tickFormat(d3.format("s"))
     .outerTickSize(0);
   var yTicks = 5;
@@ -80,19 +80,21 @@ function ScatterPlot(){
 
       g
         .select(".x.axis")
-          .attr("transform", "translate(0," + innerHeight + ")")
+          .attr("transform", "translate(0," + innerHeight/2 + ")")
           .call(xAxis)
         .select("text")
-          .attr("x", innerWidth / 2)
+          .attr("x", innerWidth-50)
           .attr("y", xAxisLabelOffset)
           .text(xAxisLabel);
 
       g
         .select(".y.axis")
+          .attr("transform", "translate(" + innerWidth/2 + ",0)")
           .call(yAxis)
         .select("text")
-          .attr("transform", "translate(-" + yAxisLabelOffset + "," + (innerHeight / 2) + ") rotate(-90)")
+          .attr("transform", "translate(-" + yAxisLabelOffset + ",55) rotate(-90)")
           .text(yAxisLabel);
+
 
     //  console.log(yScale(d[yColumn]));
       circles.enter().append("circle");
@@ -100,7 +102,65 @@ function ScatterPlot(){
         .attr("cx",      function (d){ return       xScale(d[xColumn]);     })
         .attr("cy",      function (d){ return       yScale(d[yColumn]);     })
         .attr("r",       function (d){ return       rScale(d[rColumn]);     })
-        .attr("fill",    function (d){ return   colorScale(d[colorColumn]); });
+        .attr("fill",    function (d){ return   colorScale(d[colorColumn]); })
+
+        .on("mouseover", function(d) {
+            gEnter.append("text")
+					   .attr("class", "tooltip")
+					   .attr("x", xScale(d.petal_width))
+					   .attr("y", yScale(d.petal_length))
+					   .attr("text-anchor", "end")
+					   .attr("font-size", "15px")
+					   .attr("fill", "black")
+					   .text("Gender: "+d.gender);
+            gEnter.append("text")
+					   .attr("class", "tooltip")
+					   .attr("x", xScale(d.petal_width))
+					   .attr("y", yScale(d.petal_length)+20)
+					   .attr("text-anchor", "end")
+					   .attr("font-size", "15px")
+					   .attr("fill", "black")
+					   .text("Region: "+d.species);
+            gEnter.append("text")
+					   .attr("class", "tooltip")
+					   .attr("x", xScale(d.petal_width))
+					   .attr("y", yScale(d.petal_length)+40)
+					   .attr("text-anchor", "end")
+					   .attr("font-size", "15px")
+					   .attr("fill", "black")
+					   .text("Sentiment: "+d.petal_width);
+             gEnter.append("text")
+					   .attr("class", "tooltip")
+					   .attr("x", xScale(d.petal_width))
+					   .attr("y", yScale(d.petal_length)+60)
+					   .attr("text-anchor", "end")
+					   .attr("font-size", "15px")
+					   .attr("fill", "black")
+					   .text("Polarity: "+d.petal_length);
+        })
+        .on("mouseout", function() {
+					d3.selectAll(".tooltip").remove();
+					
+		});
+    var legend = svg.selectAll(".legend")
+      .data(d3.scale.category10().domain())
+    .enter().append("g")
+      .attr("class", "legend");
+     // .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  // draw legend colored rectangles
+      legend.selectAll('rect')
+      .data(data)
+      .enter()
+      .append("rect")
+      .attr("x",100)
+      .attr("y",100)
+      .attr("width", 10)
+      .attr("height", 10)
+      .style("fill", function(d) { 
+         var color = colorRange[data.indexOf(d)][1];
+         return color;
+      });
 
       circles.exit().remove();
 
