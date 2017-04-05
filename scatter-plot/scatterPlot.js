@@ -12,6 +12,8 @@ function ScatterPlot(){
   var rColumn = "No radius column configured";
   var colorColumn = "No color column configured";
   var colorRange = d3.scale.category10().range();
+  var shapeRange = d3.scale.category10().range();
+
 
   var xAxisLabel = "No X axis label configured";
   var xAxisLabelOffset = 40;
@@ -23,6 +25,8 @@ function ScatterPlot(){
   var yScale = d3.scale.linear();
   var rScale = d3.scale.linear();
   var colorScale = d3.scale.ordinal();
+  var shapeScale = d3.scale.ordinal();
+
 
   var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
     .tickFormat(d3.format("s"))
@@ -40,6 +44,7 @@ function ScatterPlot(){
     var innerHeight = outerHeight - margin.top  - margin.bottom;
 
     colorScale.range(colorRange);
+    shapeScale.range(shapeRange);
     xScale.range([0, innerWidth]);
     yScale.range([innerHeight, 0]);
     rScale.range([rMin, rMax]);
@@ -52,7 +57,7 @@ function ScatterPlot(){
       var svg = d3.select(this).selectAll("svg").data([data]);
       var gEnter = svg.enter().append("svg").append("g");
       var g = svg.select("g");
-      var points = g.selectAll("circle").data(data);
+      var points = g.selectAll(".point").data(data);
 
       gEnter
         .append("g")
@@ -95,16 +100,12 @@ function ScatterPlot(){
           .attr("transform", "translate(-" + yAxisLabelOffset + ",55) rotate(-90)")
           .text(yAxisLabel);
 
-
-    //  console.log(yScale(d[yColumn]));
-      points.enter().append("circle");
+      points.enter().append("path");
       points
-       // .attr("cx",      function (d){ return       xScale(d[xColumn]);     })
-       // .attr("cy",      function (d){ return       yScale(d[yColumn]);     })
-        .attr("r",       5)
+        .attr("class", "point")
         .attr("transform", function(d) { return "translate(" + xScale(d[xColumn]) + "," + yScale(d[yColumn]) + ")"; })
-      //  .attr("r",       function (d){ return       rScale(d[rColumn]);     })
         .attr("fill",    function (d){ return   colorScale(d[colorColumn]); })
+        .attr("d",       d3.svg.symbol().type(function (d){ return  shapeScale(d[shapeColumn]); }))
 
 
 //////////////////THIS IS THE TOOLTIP STUFF//////////////////
@@ -202,9 +203,21 @@ function ScatterPlot(){
     return chart;
   };
 
+  chart.shapeRange = function(_) {
+    if (!arguments.length) return shapeRange;
+    shapeRange = _;
+    return chart;
+  };
+
   chart.colorColumn = function(_) {
     if (!arguments.length) return colorColumn;
     colorColumn = _;
+    return chart;
+  };
+
+  chart.shapeColumn = function(_) {
+    if (!arguments.length) return shapeColumn;
+    shapeColumn = _;
     return chart;
   };
 
