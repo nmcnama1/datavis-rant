@@ -52,7 +52,7 @@ function ScatterPlot(){
       var svg = d3.select(this).selectAll("svg").data([data]);
       var gEnter = svg.enter().append("svg").append("g");
       var g = svg.select("g");
-      var circles = g.selectAll("circle").data(data);
+      var points = g.selectAll("circle").data(data);
 
       gEnter
         .append("g")
@@ -97,13 +97,17 @@ function ScatterPlot(){
 
 
     //  console.log(yScale(d[yColumn]));
-      circles.enter().append("circle");
-      circles
-        .attr("cx",      function (d){ return       xScale(d[xColumn]);     })
-        .attr("cy",      function (d){ return       yScale(d[yColumn]);     })
-        .attr("r",       function (d){ return       rScale(d[rColumn]);     })
+      points.enter().append("circle");
+      points
+       // .attr("cx",      function (d){ return       xScale(d[xColumn]);     })
+       // .attr("cy",      function (d){ return       yScale(d[yColumn]);     })
+        .attr("r",       5)
+        .attr("transform", function(d) { return "translate(" + xScale(d[xColumn]) + "," + yScale(d[yColumn]) + ")"; })
+      //  .attr("r",       function (d){ return       rScale(d[rColumn]);     })
         .attr("fill",    function (d){ return   colorScale(d[colorColumn]); })
 
+
+//////////////////THIS IS THE TOOLTIP STUFF//////////////////
         .on("mouseover", function(d) {
             gEnter.append("text")
 					   .attr("class", "tooltip")
@@ -140,29 +144,12 @@ function ScatterPlot(){
         })
         .on("mouseout", function() {
 					d3.selectAll(".tooltip").remove();
-					
+////////////////////////////////////////////////////////////////////////
+
 		});
-    var legend = svg.selectAll(".legend")
-      .data(d3.scale.category10().domain())
-    .enter().append("g")
-      .attr("class", "legend");
-     // .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
-  // draw legend colored rectangles
-      legend.selectAll('rect')
-      .data(data)
-      .enter()
-      .append("rect")
-      .attr("x",100)
-      .attr("y",100)
-      .attr("width", 10)
-      .attr("height", 10)
-      .style("fill", function(d) { 
-         var color = colorRange[data.indexOf(d)][1];
-         return color;
-      });
 
-      circles.exit().remove();
+      points.exit().remove();
 
     });
   }
