@@ -5,7 +5,7 @@ function ScatterPlot(){
 
   var margin = { left: 60, top: 5, right: 10, bottom: 60 };
 
-  var rMin = 2; // "r" stands for radius
+  //onvar rMin = 2; // "r" stands for radius
   var rMax = 300;
   var xColumn = "No X column configured";
   var yColumn = "No Y column configured";
@@ -103,6 +103,7 @@ function ScatterPlot(){
       points.enter().append("path");
       points
         .attr("class", "point")
+        .attr("data-legend",function(d) { return colorScale(d[colorColumn]);})
         .attr("transform", function(d) { return "translate(" + xScale(d[xColumn]) + "," + yScale(d[yColumn]) + ")"; })
         .attr("fill",    function (d){ return   colorScale(d[colorColumn]); })
         .attr("d",       d3.svg.symbol().type(function (d){ return  shapeScale(d[shapeColumn]); }))
@@ -144,15 +145,24 @@ function ScatterPlot(){
 					   .text("Polarity: "+d.petal_length);
         })
         .on("mouseout", function() {
-					d3.selectAll(".tooltip").remove();
+					d3.selectAll(".tooltip").remove()
+        })
 ////////////////////////////////////////////////////////////////////////
+        .on("click", function(d) {
+          
+          var filtered = data.filter(function(d){return d.species == 'Centro';});
+          var points2 = g.selectAll(".point").data(filtered);
+          console.log(points2);
+          points2.enter().append("path");
+          points2.attr("fill",    "white");
 
-		});
+                  
+		    });
 
 
       points.exit().remove();
-
     });
+    
   }
 
   chart.outerWidth = function(_) {
