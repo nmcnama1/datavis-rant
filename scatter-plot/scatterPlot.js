@@ -1,5 +1,4 @@
 function ScatterPlot(){
-
   var outerWidth = 100;
   var outerHeight = 100;
 
@@ -39,7 +38,6 @@ function ScatterPlot(){
   var yTicks = 5;
 
   function chart(selection){
-
     var innerWidth  = outerWidth  - margin.left - margin.right;
     var innerHeight = outerHeight - margin.top  - margin.bottom;
 
@@ -47,7 +45,7 @@ function ScatterPlot(){
     shapeScale.range(shapeRange);
     xScale.range([0, innerWidth]);
     yScale.range([innerHeight, 0]);
-    rScale.range([rMin, rMax]);
+//    rScale.range([rMin, rMax]);
 
     xAxis.ticks(xTicks);
     yAxis.ticks(yTicks);
@@ -72,10 +70,10 @@ function ScatterPlot(){
         .append("text")
           .attr("class", "label")
           .style("text-anchor", "middle");
-
-      xScale.domain(d3.extent(data, function (d){ return d[xColumn]; }));
-      yScale.domain(d3.extent(data, function (d){ return d[yColumn]; }));
-      rScale.domain(d3.extent(data, function (d){ return d[rColumn]; }));
+      
+      xScale.domain([-1,1]);
+      yScale.domain([-1,1]);
+ //     rScale.domain(d3.extent(data, function (d){ return d[rColumn]; }));
 
       svg 
         .attr("width", outerWidth)
@@ -101,51 +99,68 @@ function ScatterPlot(){
           .text(yAxisLabel);
 
       points.enter().append("path");
+
       points
         .attr("class", "point")
-        .attr("data-legend",function(d) { return colorScale(d[colorColumn]);})
+       // .attr("data-legend",function(d) { return colorScale(d[colorColumn]);})
         .attr("transform", function(d) { return "translate(" + xScale(d[xColumn]) + "," + yScale(d[yColumn]) + ")"; })
-        .attr("fill",    function (d){ return   colorScale(d[colorColumn]); })
-        .attr("d",       d3.svg.symbol().type(function (d){ return  shapeScale(d[shapeColumn]); }))
-
+        .attr("fill", function (d){ return   colorScale(d[colorColumn]); })
+        .attr("d", d3.svg.symbol().type(function (d){ return  shapeScale(d[shapeColumn]); }))
 
 //////////////////THIS IS THE TOOLTIP STUFF//////////////////
         .on("mouseover", function(d) {
             gEnter.append("text")
 					   .attr("class", "tooltip")
-					   .attr("x", xScale(d.petal_width))
-					   .attr("y", yScale(d.petal_length))
+					   .attr("x", xScale(d.user_sentiment_score))
+					   .attr("y", yScale(d.user_polarity_score))
 					   .attr("text-anchor", "end")
 					   .attr("font-size", "15px")
 					   .attr("fill", "black")
-					   .text("Gender: "+d.gender);
+					   .text("Gender: "+d.user_gender);
             gEnter.append("text")
 					   .attr("class", "tooltip")
-					   .attr("x", xScale(d.petal_width))
-					   .attr("y", yScale(d.petal_length)+20)
+					   .attr("x", xScale(d.user_sentiment_score))
+					   .attr("y", yScale(d.user_polarity_score)+20)
 					   .attr("text-anchor", "end")
 					   .attr("font-size", "15px")
 					   .attr("fill", "black")
-					   .text("Region: "+d.species);
+					   .text("Region: "+d.user_location);
             gEnter.append("text")
 					   .attr("class", "tooltip")
-					   .attr("x", xScale(d.petal_width))
-					   .attr("y", yScale(d.petal_length)+40)
+					   .attr("x", xScale(d.user_sentiment_score))
+					   .attr("y", yScale(d.user_polarity_score)+40)
 					   .attr("text-anchor", "end")
 					   .attr("font-size", "15px")
 					   .attr("fill", "black")
-					   .text("Sentiment: "+d.petal_width);
+					   .text("Sentiment: "+d.user_sentiment_score);
              gEnter.append("text")
 					   .attr("class", "tooltip")
-					   .attr("x", xScale(d.petal_width))
-					   .attr("y", yScale(d.petal_length)+60)
+					   .attr("x", xScale(d.user_sentiment_score))
+					   .attr("y", yScale(d.user_polarity_score)+60)
 					   .attr("text-anchor", "end")
 					   .attr("font-size", "15px")
 					   .attr("fill", "black")
-					   .text("Polarity: "+d.petal_length);
+					   .text("Polarity: "+d.user_polarity_score);
+             gEnter.append("line")
+             .attr("class", "crosshair")
+             .attr("x1", 0)
+             .attr("x2", innerWidth)
+             .attr("y1", yScale(d.user_polarity_score))
+             .attr("y2", yScale(d.user_polarity_score))
+             .attr("stroke-width", 2)
+             .attr("stroke", "black");
+             gEnter.append("line")
+             .attr("class", "crosshair")
+             .attr("x1", xScale(d.user_sentiment_score))
+             .attr("x2", xScale(d.user_sentiment_score))
+             .attr("y1", 0)
+             .attr("y2", innerHeight)
+             .attr("stroke-width", 2)
+             .attr("stroke", "black");
         })
         .on("mouseout", function() {
-					d3.selectAll(".tooltip").remove()
+					d3.selectAll(".tooltip").remove();
+          d3.selectAll(".crosshair").remove();
         })
 ////////////////////////////////////////////////////////////////////////
         .on("click", function(d) {
@@ -192,18 +207,6 @@ function ScatterPlot(){
   chart.rColumn = function(_) {
     if (!arguments.length) return rColumn;
     rColumn = _;
-    return chart;
-  };
-
-  chart.rMin = function(_) {
-    if (!arguments.length) return rMin;
-    rMin = _;
-    return chart;
-  };
-
-  chart.rMax = function(_) {
-    if (!arguments.length) return rMax;
-    rMax = _;
     return chart;
   };
 
