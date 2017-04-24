@@ -94,7 +94,8 @@ d3.csv("twitter_data.csv", function(error, data) {
   var maxfontSize = 0;
   tags = tags.slice(0,100); // choose top 250 words
   console.log(tags);
-  var color = d3.scale.ordinal().range(["#66c2a5","#fc8d62","#8da0cb","#e78ac3","#a6d854"]);
+  var color = "#5e6472";
+ // var color = d3.scale.ordinal().range(["#66c2a5","#fc8d62","#8da0cb","#e78ac3","#a6d854"]);
   var fontSize = d3.scale.pow().exponent(5).domain([0,1]).range([10,80]);
 
   var layout = d3.layout.cloud()
@@ -137,7 +138,7 @@ d3.csv("twitter_data.csv", function(error, data) {
     .selectAll('text')
       .style('font-size','20px')
       .style('fill',function(d) { return color(d); })
-      .style('font','sans-serif');
+      .style('font','Raleway');
 
   function draw(words) {
     wordcloud.selectAll("text")
@@ -146,15 +147,7 @@ d3.csv("twitter_data.csv", function(error, data) {
         .attr('class','word')
         .style("font-size", function(d) { return d.size + "px"; })
         .style("font-family", function(d) { return d.font; })
-        .style("fill", function(d) {
-            if(d.size < maxfontSize/3){
-              return "black";
-            } else if(d.size < (2*maxfontSize/3)){
-              return "blue";
-            } else {
-              return "red";
-            }
-        })
+        .style("fill", color)
         .attr("text-anchor", "middle")
         .attr("transform", function(d) { return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")"; })
         .text(function(d) { return d.text; });
