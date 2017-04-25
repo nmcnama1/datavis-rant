@@ -2,20 +2,20 @@ var scatterPlot = ScatterPlot();
 var usedIDs = [];
 
 scatterPlot
-  .outerWidth(960)
-  .outerHeight(500)
-  .margin({ left: 95, top: 10, right: 10, bottom: 85 })
+  .outerWidth(600)
+  .outerHeight(600)
+  .margin({ left: 80, top: 80, right: 80, bottom: 80 })
   .xColumn("user_sentiment_score")
-  .xAxisLabel("Sentiment")
+  .xAxisLabel("Positive")
   .xAxisLabelOffset(0)
   .xTicks(10)
   .yColumn("user_polarity_score")
-  .yAxisLabel("Polarity")
+  .yAxisLabel("For")
   .yAxisLabelOffset(0)
   .yTicks(10)
   .colorColumn("user_location")
   .shapeColumn("user_gender")
-  .shapeRange(["circle", "square"])
+  .shapeRange(["circle", "cross"])
   .colorRange(["#ffa69e", "#896978", "#b8f2e6", "#62a87c", "#9DB4E0", "#E9D985", "#EDB897", "#EA68A1", "#F44410"]);
 
 

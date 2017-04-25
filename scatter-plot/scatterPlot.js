@@ -28,12 +28,13 @@ function ScatterPlot(){
   var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
     .tickFormat(d3.format("s"))
     .outerTickSize(0);
-  var xTicks = 5;
+//  var xTicks = 5;
 
   var yAxis = d3.svg.axis().scale(yScale).orient("right")
     .tickFormat(d3.format("s"))
     .outerTickSize(0);
-  var yTicks = 5;
+  //var yTicks = 5;
+
 
   function chart(selection){
     var innerWidth  = outerWidth  - margin.left - margin.right;
@@ -61,6 +62,34 @@ function ScatterPlot(){
           .attr("class", "label")
           .style("text-anchor", "middle");
 
+      svg
+        .append("text")
+          .attr("id", "agLabel")
+          .attr("class", "axislabel")
+          .text("Against");
+      svg
+        .select("#agLabel")
+        .attr("transform", "translate(" + (innerWidth/2+margin.left-elWidth("agLabel")/2) +", " + (innerHeight+margin.top+10+elHeight("agLabel")/2) + ")")
+
+
+
+      svg
+        .append("text")
+          .attr("id", "negLabel")
+          .attr("class", "axislabel")
+          .text("Negative");
+      svg
+        .select("#negLabel")
+        .attr("transform", "translate(" + (margin.left-elHeight("negLabel")/2) +", " + (margin.top+innerHeight/2+elWidth("negLabel")/2) + ") rotate(-90)")
+
+      function elWidth(elID) {
+        return document.getElementById(elID).getBoundingClientRect().width;
+      }
+      
+      function elHeight(elID) {
+        return document.getElementById(elID).getBoundingClientRect().height;
+      }
+
       gEnter
         .append("g")
           .attr("class", "y axis")
@@ -75,30 +104,33 @@ function ScatterPlot(){
         .attr("width", outerWidth)
         .attr("height", outerHeight);
 
-      g.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      g.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
       g
         .select(".x.axis")
           .attr("transform", "translate(0," + innerHeight/2 + ")")
           .call(xAxis)
         .select("text")
-          .attr("x", innerWidth-50)
-          .attr("y", xAxisLabelOffset)
+          .attr("transform", "translate(" + 450 +", " + xAxisLabelOffset + ") rotate(90)")
           .text(xAxisLabel);
+
+      g
+        .select(".text")
+          .attr("transform", "translate(0," + innerHeight/2 + ")")
+          .call(xAxis)
 
       g
         .select(".y.axis")
           .attr("transform", "translate(" + innerWidth/2 + ",0)")
           .call(yAxis)
         .select("text")
-          .attr("transform", "translate(-" + yAxisLabelOffset + ",55) rotate(-90)")
+          .attr("transform", "translate(-" + yAxisLabelOffset + ",-10)")
           .text(yAxisLabel);
 
       points.enter().append("path");
 
       points
         .attr("class", "point")
-       // .attr("data-legend",function(d) { return colorScale(d[colorColumn]);})
         .attr("transform", function(d) { return "translate(" + xScale(d[xColumn]) + "," + yScale(d[yColumn]) + ")"; })
         .attr("fill", function (d){ return   colorScale(d[colorColumn]); })
         .attr("d", d3.svg.symbol().type(function (d){ return  shapeScale(d[shapeColumn]); }))
@@ -172,7 +204,9 @@ function ScatterPlot(){
 
 
       points.exit().remove();
+      
     });
+
     
   }
 
