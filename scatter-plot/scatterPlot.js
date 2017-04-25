@@ -71,8 +71,6 @@ function ScatterPlot(){
         .select("#agLabel")
         .attr("transform", "translate(" + (innerWidth/2+margin.left-elWidth("agLabel")/2) +", " + (innerHeight+margin.top+10+elHeight("agLabel")/2) + ")")
 
-
-
       svg
         .append("text")
           .attr("id", "negLabel")
@@ -85,7 +83,7 @@ function ScatterPlot(){
       function elWidth(elID) {
         return document.getElementById(elID).getBoundingClientRect().width;
       }
-      
+
       function elHeight(elID) {
         return document.getElementById(elID).getBoundingClientRect().height;
       }
@@ -176,7 +174,7 @@ function ScatterPlot(){
              .attr("y1", yScale(d.user_polarity_score))
              .attr("y2", yScale(d.user_polarity_score))
              .attr("stroke-width", 2)
-             .attr("stroke", "black");
+             .attr("stroke", "#d3d3d3");
              gEnter.append("line")
              .attr("class", "crosshair")
              .attr("x1", xScale(d.user_sentiment_score))
@@ -184,7 +182,7 @@ function ScatterPlot(){
              .attr("y1", 0)
              .attr("y2", innerHeight)
              .attr("stroke-width", 2)
-             .attr("stroke", "black");
+             .attr("stroke", "#d3d3d3");
         })
         .on("mouseout", function() {
 					d3.selectAll(".tooltip").remove();
