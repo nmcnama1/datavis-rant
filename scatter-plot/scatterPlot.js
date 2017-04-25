@@ -4,8 +4,6 @@ function ScatterPlot(){
 
   var margin = { left: 60, top: 5, right: 10, bottom: 60 };
 
-  //onvar rMin = 2; // "r" stands for radius
-  var rMax = 300;
   var xColumn = "No X column configured";
   var yColumn = "No Y column configured";
   var rColumn = "No radius column configured";
@@ -45,7 +43,6 @@ function ScatterPlot(){
     shapeScale.range(shapeRange);
     xScale.range([0, innerWidth]);
     yScale.range([innerHeight, 0]);
-//    rScale.range([rMin, rMax]);
 
     xAxis.ticks(xTicks);
     yAxis.ticks(yTicks);
@@ -73,7 +70,6 @@ function ScatterPlot(){
       
       xScale.domain([-1,1]);
       yScale.domain([-1,1]);
- //     rScale.domain(d3.extent(data, function (d){ return d[rColumn]; }));
 
       svg 
         .attr("width", outerWidth)
@@ -164,12 +160,12 @@ function ScatterPlot(){
         })
 ////////////////////////////////////////////////////////////////////////
         .on("click", function(d) {
-          
-          var filtered = data.filter(function(d){return d.species == 'Centro';});
+          console.log(d.user_location);
+          var filtered = data.filter(function(e){return e.user_location == d.user_location;});
           var points2 = g.selectAll(".point").data(filtered);
           console.log(points2);
-          points2.enter().append("path");
-          points2.attr("fill",    "white");
+          //points2.enter().append("path");
+          //points2.attr("fill",    "white");
 
                   
 		    });
