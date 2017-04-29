@@ -27,6 +27,9 @@ function numberify(d){
   d.user_polarity_score = +d.user_polarity_score;
   d.user_sentiment_score = +d.user_sentiment_score;
   d.user_retweet_count = +d.user_retweet_count;
+  if (d.user_location == "-1") {
+    d.user_location = "Other";
+  }
   if (usedIDs.indexOf(d.user_id) != -1) {
     return null;
   } else {
@@ -39,7 +42,7 @@ function numberify(d){
 
 
 
-d3.csv("twitter_data_small.csv", numberify, function (data){
+d3.csv("plzwork.csv", numberify, function (data){
   d3.select("#chart")
     .datum(data)
     .call(scatterPlot);
