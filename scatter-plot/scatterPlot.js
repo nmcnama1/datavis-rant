@@ -54,7 +54,10 @@ function ScatterPlot(){
       var gEnter = svg.enter().append("svg").append("g");
       var g = svg.select("g");
       var points = g.selectAll(".point").data(data);
-
+      var tooltip_div = d3.select("body").append("div")	
+        .attr("class", "tooltip")
+        .style("opacity", 0)
+        .style("top", 200+"px");
       gEnter
         .append("g")
           .attr("class", "x axis")
@@ -135,38 +138,10 @@ function ScatterPlot(){
 
 //////////////////THIS IS THE TOOLTIP STUFF//////////////////
         .on("mouseover", function(d) {
-            gEnter.append("text")
-					   .attr("class", "tooltip")
-					   .attr("x", xScale(d.user_sentiment_score))
-					   .attr("y", yScale(d.user_polarity_score))
-					   .attr("text-anchor", "end")
-					   .attr("font-size", "15px")
-					   .attr("fill", "black")
-					   .text("Gender: "+d.user_gender);
-            gEnter.append("text")
-					   .attr("class", "tooltip")
-					   .attr("x", xScale(d.user_sentiment_score))
-					   .attr("y", yScale(d.user_polarity_score)+20)
-					   .attr("text-anchor", "end")
-					   .attr("font-size", "15px")
-					   .attr("fill", "black")
-					   .text("Region: "+d.user_location);
-            gEnter.append("text")
-					   .attr("class", "tooltip")
-					   .attr("x", xScale(d.user_sentiment_score))
-					   .attr("y", yScale(d.user_polarity_score)+40)
-					   .attr("text-anchor", "end")
-					   .attr("font-size", "15px")
-					   .attr("fill", "black")
-					   .text("Sentiment: "+d.user_sentiment_score);
-             gEnter.append("text")
-					   .attr("class", "tooltip")
-					   .attr("x", xScale(d.user_sentiment_score))
-					   .attr("y", yScale(d.user_polarity_score)+60)
-					   .attr("text-anchor", "end")
-					   .attr("font-size", "15px")
-					   .attr("fill", "black")
-					   .text("Polarity: "+d.user_polarity_score);
+            tooltip_div.style("opacity", .9);
+            tooltip_div	.html("User ID: "+d.user_id+"<br/>Gender: "+d.user_gender+ "<br/>Region: "+d.user_location+"<br/>Sentiment: "+d.user_sentiment_score+"<br/>Polarity: "+d.user_polarity_score+"<br/>Followers: "+d.user_follower_count+"<br/>Following: "+d.user_friends_count)	
+                .style("left", (d3.event.pageX) + "px")		
+                .style("top", (d3.event.pageY - 28) + "px");	
              gEnter.append("line")
              .attr("class", "crosshair")
              .attr("x1", 0)
@@ -185,8 +160,9 @@ function ScatterPlot(){
              .attr("stroke", "#d3d3d3");
         })
         .on("mouseout", function() {
-					d3.selectAll(".tooltip").remove();
-          d3.selectAll(".crosshair").remove();
+            tooltip_div.style("opacity", 0);	
+            d3.selectAll(".crosshair").remove();
+
         })
 ////////////////////////////////////////////////////////////////////////
         .on("click", function(d) {
