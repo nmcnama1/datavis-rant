@@ -1,109 +1,415 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<style>
-
-.x.axis path {
-  display: none;
-}
-
-</style>
 <body>
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script src="d3cloud.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Lobster|Raleway" rel="stylesheet">
 <script>
-
 var margin = {top: 20, right: 20, bottom: 40, left: 20},
-    width = 960 - margin.left - margin.right,
+    width = 600 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
-
-d3.csv("twitter_data.csv", function(error, data) {
+d3.csv("twitter.csv", function(error, data) {
   
-  //var categories = d3.keys(d3.nest().key(function(d) { return d.category; }).map(data)); // prob dont need
-  //console.log(categories)
-
-  /*var alltweets = "";
-  data.forEach(function(d,i){
-    alltweets += d.tweet + " ";
-  });
-
-  console.log(alltweets);*/
-  //var tweetArray = alltweets.split(" ");
-  
-  //get all the tweets from the user -- list of json objects
-
-  /*var tweets;
-  data.forEach(function(d,i){
-    tweets += d.tweets;
-  })
-
-  console.log(tweets);
-  console.log("hi");
-  var alltweets;
-  tweets.forEach(function(d,i){
-    alltweets += d.tweet_text + " ";
-  });*/
-
   var tweet_hashes = "";
-  var counter = 0;
+  var antioquia_hashes = "";
+  var bogota_hashes = "";
+  var cafetero_hashes = "";
+  var caribe_hashes = "";
+  var centro_hashes = "";
+  var oriento_hashes = "";
+  var otres_hashes = "";
+  var pacifica_hashes = "";
+  var other_hashes = "";
+
+  var tweet_hashes_m = "";
+  var antioquia_hashes_m = "";
+  var bogota_hashes_m = "";
+  var cafetero_hashes_m = "";
+  var caribe_hashes_m = "";
+  var centro_hashes_m = "";
+  var oriento_hashes_m = "";
+  var otres_hashes_m = "";
+  var pacifica_hashes_m = "";
+  var other_hashes_m = "";
+
+  var tweet_hashes_f = "";
+  var antioquia_hashes_f = "";
+  var bogota_hashes_f = "";
+  var cafetero_hashes_f = "";
+  var caribe_hashes_f = "";
+  var centro_hashes_f = "";
+  var oriento_hashes_f = "";
+  var otres_hashes_f = "";
+  var pacifica_hashes_f = "";
+  var other_hashes_f = "";
+
+
   data.forEach(function(d){
-   // while(counter < 20){
     var h = d.tweet_hashtag;
     h = h.replace(/,/g, " ");
+    if(d.user_location == "Bogota"){
+      if(d.user_gender == "Male"){
+        bogota_hashes_m += h;
+        bogota_hashes_m += " ";
+      } else {
+        bogota_hashes_f += h;
+        bogota_hashes_f += " ";
+      }
+      bogota_hashes += h;
+      bogota_hashes += " ";
+    }
+    else if(d.user_location == "Cafetero"){
+      if(d.user_gender == "Male"){
+        cafetero_hashes_m += h;
+        cafetero_hashes_m += " ";
+      } else {
+        cafetero_hashes_f += h;
+        cafetero_hashes_f += " ";
+      }
+      cafetero_hashes += h;
+      cafetero_hashes += " ";      
+    }
+    else if(d.user_location == "Caribe"){
+      if(d.user_gender == "Male"){
+        caribe_hashes_m += h;
+        caribe_hashes_m += " ";
+      } else {
+        caribe_hashes_f += h;
+        caribe_hashes_f += " ";
+      }
+      caribe_hashes += h;
+      caribe_hashes += " ";      
+    }
+    else if(d.user_location == "Centro"){
+      if(d.user_gender == "Male"){
+        centro_hashes_m += h;
+        centro_hashes_m += " ";
+      } else {
+        centro_hashes_f += h;
+        centro_hashes_f += " ";
+      }
+      centro_hashes += h;
+      centro_hashes += " ";      
+    }
+   else if(d.user_location == "Oriento"){
+      if(d.user_gender == "Male"){
+        oriento_hashes_m += h;
+        oriento_hashes_m += " ";
+      } else {
+        oriento_hashes_f += h;
+        oriento_hashes_f += " ";
+      }
+      oriento_hashes += h;
+      oriento_hashes += " ";      
+    }
+    else if(d.user_location == "Otres"){
+      if(d.user_gender == "Male"){
+        otres_hashes_m += h;
+        otres_hashes_m += " ";
+      } else {
+        otres_hashes_f += h;
+        otres_hashes_f += " ";
+      }
+      otres_hashes += h;
+      otres_hashes += " ";      
+    }
+    else if(d.user_location == "Pacifica"){
+      if(d.user_gender == "Male"){
+        pacifica_hashes_m += h;
+        pacifica_hashes_m += " ";
+      } else {
+        pacifica_hashes_f += h;
+        pacifica_hashes_f += " ";
+      }
+      pacifica_hashes += h;
+      pacifica_hashes += " ";      
+    }
+    else if(d.user_location == "Antioquia"){
+      if(d.user_gender == "Male"){
+        antioquia_hashes_m += h;
+        antioquia_hashes_m += " ";
+      } else {
+        antioquia_hashes_f += h;
+        antioquia_hashes_f += " ";
+      }
+      antioquia_hashes += h;
+      antioquia_hashes += " ";      
+    }
+    else {
+      if(d.user_gender == "Male"){
+        other_hashes_m += h;
+        other_hashes_m += " ";
+      } else {
+        other_hashes_f += h;
+        other_hashes_f += " ";
+      }
+      other_hashes += h;
+      other_hashes += " ";      
+    }      
+    if(d.user_gender == "Male"){
+        tweet_hashes_m += h;
+        tweet_hashes_m += " ";
+      } else {
+        tweet_hashes_f += h;
+        tweet_hashes_f += " ";
+      }
     tweet_hashes += h;
     tweet_hashes += " ";
-   // counter += 1;
-
-    //}
-
   });
 
   hash_array = tweet_hashes.split(" ");
+  hashM = tweet_hashes_m.split(" ");
+  hashF = tweet_hashes_f.split(" ");
+  //hash_array and hashObjs = ALL Hashtags (No filtering)
   
   hashObjs = [];
-
   hash_array.forEach(function(d){
     var hashObj = {};
     hashObj.hashtag = d;
     hashObjs.push(hashObj);
   });
+  hash_array_F.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    hashF.push(hashObj);
+  });
+  hash_array_M.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    hashM.push(hashObj);
+  });  
 
-  //console.log(hashObjs);
+
+  antioquiaObjs = [];  // ALL Antioquia
+  antioquiaM = [];     // All Antioquia Male
+  antioquiaF = [];     // All Antioquia Female
+  antioquia_array = antioquia_hashes.split(" ");
+  antioquia_array_M = antioquia_hashes_m.split(" ");
+  antioquia_array_F = antioquia_hashes_f.split(" ");
+  antioquia_array.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    antioquiaObjs.push(hashObj);
+  });
+  antioquia_array_F.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    antioquiaF.push(hashObj);
+  });
+  antioquia_array_M.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    antioquiaM.push(hashObj);
+  });  
+
+
+  bogotaObjs = [];  // All Bogota
+  bogotaM = [];     // All Bogota Male
+  bogotaF = [];     // All Bogota Female
+  bogota_array = bogota_hashes.split(" ");
+  bogota_array_M = bogota_hashes_m.split(" ");
+  bogota_array_F = bogota_hashes_f.split(" ");
+  bogota_array.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    bogotaObjs.push(hashObj);
+  });
+  bogota_array_F.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    bogotaF.push(hashObj);
+  });
+  bogota_array_M.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    bogotaM.push(hashObj);
+  }); 
+
+  cafeteroObjs = [];  // All Bogota
+  cafeteroM = [];     // All Bogota Male
+  cafeteroF = [];     // All Bogota Female
+  cafetero_array = cafetero_hashes.split(" ");
+  cafetero_array_M = cafetero_hashes_m.split(" ");
+  cafetero_array_F = cafetero_hashes_f.split(" ");
+  cafetero_array.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    cafeteroObjs.push(hashObj);
+  });
+  cafetero_array_F.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    cafeteroF.push(hashObj);
+  });
+  cafetero_array_M.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    cafeteroM.push(hashObj);
+  }); 
+
+
+  caribeObjs = [];  // ALL Caribe
+  caribeM = [];     // All Caribe Male
+  caribeF = [];     // All Caribe Female
+  caribe_array = caribe_hashes.split(" ");
+  caribe_array_M = caribe_hashes_m.split(" ");
+  caribe_array_F = caribe_hashes_f.split(" ");
+  caribe_array.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    caribeObjs.push(hashObj);
+  });
+  caribe_array_F.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    caribeF.push(hashObj);
+  });
+  caribe_array_M.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    caribeM.push(hashObj);
+  });  
+
+
+  centroObjs = [];  // ALL Caribe
+  centroM = [];     // All Caribe Male
+  centroF = [];     // All Caribe Female
+  centro_array = centro_hashes.split(" ");
+  centro_array_M = centro_hashes_m.split(" ");
+  centro_array_F = centro_hashes_f.split(" ");
+  centro_array.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    centroObjs.push(hashObj);
+  });
+  centro_array_F.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    centroF.push(hashObj);
+  });
+  centro_array_M.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    centroM.push(hashObj);
+  });  
+
+
+  orientoObjs = [];  // ALL Caribe
+  orientoM = [];     // All Caribe Male
+  orientoF = [];     // All Caribe Female
+  oriento_array = oriento_hashes.split(" ");
+  oriento_array_M = oriento_hashes_m.split(" ");
+  oriento_array_F = oriento_hashes_f.split(" ");
+  oriento_array.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    orientoObjs.push(hashObj);
+  });
+  oriento_array_F.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    orientoF.push(hashObj);
+  });
+  oriento_array_M.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    orientoM.push(hashObj);
+  });   
+
+
+  otresObjs = [];  // ALL Caribe
+  otresM = [];     // All Caribe Male
+  otresF = [];     // All Caribe Female
+  otres_array = otres_hashes.split(" ");
+  otres_array_M = otres_hashes_m.split(" ");
+  otres_array_F = otres_hashes_f.split(" ");
+  otres_array.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    otresObjs.push(hashObj);
+  });
+  otres_array_F.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    otresF.push(hashObj);
+  });
+  otres_array_M.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    otresM.push(hashObj);
+  });       
+
+
+  pacificaObjs = [];  // ALL Caribe
+  pacificaM = [];     // All Caribe Male
+  pacificaF = [];     // All Caribe Female
+  pacifica_array = pacifica_hashes.split(" ");
+  pacifica_array_M = pacifica_hashes_m.split(" ");
+  pacifica_array_F = pacifica_hashes_f.split(" ");
+  pacifica_array.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    pacificaObjs.push(hashObj);
+  });
+  pacifica_array_F.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    pacificaF.push(hashObj);
+  });
+  pacifica_array_M.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    pacificaM.push(hashObj);
+  });          
+
+
+  otherObjs = [];  // ALL Caribe
+  otherM = [];     // All Caribe Male
+  otherF = [];     // All Caribe Female
+  other_array = other_hashes.split(" ");
+  othera_array_M = other_hashes_m.split(" ");
+  other_array_F = other_hashes_f.split(" ");
+  other_array.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    otherObjs.push(hashObj);
+  });
+  other_array_F.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    otherF.push(hashObj);
+  });
+  other_array_M.forEach(function(d){
+    var hashObj = {}
+    hashObj.hashtag = d;
+    otherM.push(hashObj);
+  });    
+   
 
 
 
   var wordCount = d3.nest()
                   .key(function(d) {return d.hashtag;})
                   .rollup(function(v) {return v.length;})
-                  .entries(hashObjs);
-
-  console.log(wordCount);
-
+                  .entries(caribeF);
   wordCount.sort(function(a,b){
     return b.values-a.values;
   });
-
   var tags = [];
-
   wordCount.forEach(function(d){
     tags.push([d.key, parseInt(d.values)]);
   });
-
   var max = wordCount[0].values + 1;
-  console.log("max: " + max);
-
   var maxfontSize = 0;
   tags = tags.slice(0,100); // choose top 250 words
-  console.log(tags);
   var color = "#5e6472";
- // var color = d3.scale.ordinal().range(["#66c2a5","#fc8d62","#8da0cb","#e78ac3","#a6d854"]);
   var fontSize = d3.scale.pow().exponent(5).domain([0,1]).range([10,80]);
-
   var layout = d3.layout.cloud()
       .timeInterval(10)
       .size([width, height])
       .words(tags)
       .rotate(function(d) { return 0; })
-      .font('monospace')
+      .font('Raleway')
       .fontSize(function(d,i) { 
           if(fontSize(d[1]/max) > maxfontSize){
             maxfontSize = fontSize(d[1]/max);
@@ -113,33 +419,21 @@ d3.csv("twitter_data.csv", function(error, data) {
       .spiral("archimedean")
       .on("end", draw)
       .start();
-
   var svg = d3.select('body').append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
   var wordcloud = svg.append("g")
       .attr('class','wordcloud')
       .attr("transform", "translate(" + width/2 + "," + height/2 + ")");
-
-  /*var x0 = d3.scale.ordinal()
-      .rangeRoundBands([0, width], .1)
-      .domain(categories);
-  */
-/*  var xAxis = d3.svg.axis()
-      //.scale(x0)
-      .orient("bottom");
-*/
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
     .selectAll('text')
       .style('font-size','20px')
       .style('fill',function(d) { return color(d); })
-      .style('font','Raleway');
-
+      .style('font','Serif');
   function draw(words) {
     wordcloud.selectAll("text")
         .data(words)
@@ -152,7 +446,5 @@ d3.csv("twitter_data.csv", function(error, data) {
         .attr("transform", function(d) { return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")"; })
         .text(function(d) { return d.text; });
   };
-
 });
-
 </script>
