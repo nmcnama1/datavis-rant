@@ -83,6 +83,9 @@ d3.csv("twitter_data.csv", numberify, function (data){
 
 function updateScatterData() {
     updateLineData();
+    var el = document.getElementById( 'tooltipBox' );
+    el.parentNode.removeChild( el );
+
     data = [];
     if (d3.select("#checkMale").property("checked")) {
       data = addLocations("Male", data)

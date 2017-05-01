@@ -73,6 +73,7 @@ function ScatterPlot(){
       var g = svg.select("g");
       var points = g.selectAll(".point").data(data);
       var tooltip_div = d3.select("body").append("div")	
+        .attr("id", "tooltipBox")
         .attr("class", "tooltip")
         .style("opacity", 0)
         .style("top", 200+"px");

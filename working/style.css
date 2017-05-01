@@ -104,3 +104,21 @@ svg{
 #wordcloudChart{
   width: 50%;
 }
+
+div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    padding: 5px;				
+    font: 12px sans-serif;		
+    background: #5e6472;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;
+    color:#d3d3d3;	
+    font-family: 'Raleway', serif;
+}
+
+g path:hover {
+    stroke:#d3d3d3;
+    stroke-width: 3px;
+}
