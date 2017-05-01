@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Peace in 140 Characters</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Raleway" rel="stylesheet"> 
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+	<script src="d3cloud.js"></script>
+</head>
+<body>
+<h1>Peace in 140 Characters</h1>
+<p>The Colombian Peace Process has been the response to the Colombian Conflict that has been occurring over the last half century in the South American country. Starting with the formation of the Revolutionary Armed Forces of Colombia (FARC) in 1964, armed warfare has taken place between the Colombian government and several left-wing guerrilla groups such as FARC. In November of 2016, the Colombian Conflict was brought to a close with the passage of the Peace Accord. However, its path to ratification included a failed referendum where the electorate voted at 50.2% to reject the agreement and 49.8% to ratify it. Rather than facing a second referendum after its subsequent revision, the deal was sent to Congress where it was ratified by both houses. </p>
+<p>Particularly given the lack of a second referendum to pass the accord, questions have been raised about how well the interests and wishes of the Colombian people were served during the peace process. This type of speculation relating to political actions is not unique. The conflict itself was long and complex, with a large number of parties and nuanced motives involved. Thus, understanding public sentiment and polarization over time as the events unfolded was a convoluted and perplexing endeavor. Particularly in politics, and where conflict and elections are involved, an accurate and detailed understanding of people’s current thoughts can be incredibly valuable. This can help policymakers best cater to the needs and wishes of their constituents, keep governments accountable, give predictive power to election analysts, and illuminate particular regions or demographics whose values and opinions may vary from those of the majority. To these ends, a detailed visualization of population opinions is beneficial and useful in many political landscapes and timelines. This Colombian Peace Process visulization's data is from Twitter, a social media platform where people can share what they are feeling or thinking up to 140 characters at a time. </p>
+<p>
+This interactive visulization is comprised of three charts: quadrant plot of user sentiment (positive, negative) and user polarization (for or against referendum), hashtag trend timeline, and hashtag word cloud.  Note, the tweet text is in Spanish, thus so are portions of the visulization. The charts are interactive and can be filtered, using the following check boxes, by user gender and user location. We hope you enjoy this visulization and gain great insight!
+</p>
+<div id="checkboxes">
+Gender</br>
+<input type="checkbox" id="checkFemale" checked> <div id="plussymb"></div>  Female
+<input type="checkbox" id="checkMale" checked> <div id="circlesymb"></div> Male
+</br></br>Location<br>
+<input type="checkbox" id="checkAntioquia" checked ><span style="color:#ffa69e"> Antioquia </span>
+<input type="checkbox" id="checkBogota" checked><span style="color:#896978"> Bogota </span>
+<input type="checkbox" id="checkCafetero" checked><span style="color:#b8f2e6"> Cafetero </span>
+<input type="checkbox" id="checkCaribe" checked><span style="color:#62a87c"> Caribe </span>
+<input type="checkbox" id="checkCentro" checked><span style="color:#9db4e0"> Centro </span>
+<input type="checkbox" id="checkOriento" checked><span style="color:#e9d985"> Oriento </span>
+<input type="checkbox" id="checkOtres" checked><span style="color:#084c61"> Otres </span>
+<input type="checkbox" id="checkPacifica" checked><span style="color:#db504a"> Pacifica </span>
+<input type="checkbox" id="checkOtro" checked><span style="color:#c4a9d8"> Otro </span>
+</br></div>
+
+<!-- load the d3.js library -->    
+<script src="d3.v3/d3.v3.min.js"></script>
+
+<div id="lineChart"></div>
+<script src="lineChart.js" type="text/javascript"></script>
+
+<!-- <script src="cloud.js" type="text/javascript"></script>  -->
+<h3>Target User</h3>
+<p>The intended target users of this dataset are policy makers (particularly those involved in the Colombian Peace Process), the Colombian people, and anyone else genuinely interested in the Colombian political environment or general political sentiment. We did not have access to these users for feedback, but worked with Aastha Nigam and Henry, graduate students, and drew from our own interests in politics to design a visualization catering to our audience.</p>
+<h3>Target Tasks</h3>
+<ul>
+<li>What location has the most positive sentiment?</li>
+<li>What gender has the most positive polarity?</li>
+<li>What location has the most similar polarization and polarity?</li>
+<li>What are the common phrases/words used?</li>
+<li>What are the trends between the locations?</li>
+<li>What are the trends between the genders?</li>
+</ul>
+<h3>Elements of Design</h3>
+<p>Coming in version 2!</p>
+<h3>Interesting Insights</h3>
+<p>More coming in version 2!</p>
+<p><strong>Quadrant Plot of Sentiment and Polarization</strong></p>
+<ul>
+<li>Nancy add stuff!</li>
+</ul>
+<p><strong>Hashtag Trend Timeline</strong></p>
+<ul>
+<li>The hashtag #hagahistoriavoteno, which translates to 'Make History, Vote No' trended positivly with males on September 28th, while losing popularity with the female.  This hashtag was used to expresss negative attitudes and reject the accord.  Thus, it trending more negativly with males suggests there was a period of more negative sentiment among the male gender.</li>
+</ul>
+<p><strong>Hashtag Word Cloud</strong></p>
+<ul>
+<li>Whitney add something!</li>
+</ul>
+<h3>User Studies</h3>
+<p>Coming in version 2!</p>
+<h3>Further Work</h3>
+<p>There are a few known bugs that exist in this initial version.  We hope to make strides in addressing at least some before the release of version 2. The known bugs are:</p>
+<ul>
+	<li>Mouseover in hashtag trend timeline shows values of inactive lines.</li>
+	<li>Nancy bugs.</li>
+	<li>Whitney bugs.</li>
+</ul>
+<p>In addition to fixing the know bugs, further work on this project is extensive.  </p>
+</body>

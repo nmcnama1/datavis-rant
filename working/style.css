@@ -1,0 +1,102 @@
+body{
+  font-family: 'Raleway', serif;
+  color: #5e6472;
+}
+
+h1{
+  text-align: center;
+  font-family: 'Lobster', sans-serif;
+  font-size: 300%;
+  margin: 0px;
+  padding-top: 5px;
+  padding-bottom: 8px;
+}
+
+h3{
+  padding-left: 3%;
+  padding-bottom: 0px;
+}
+
+p{
+  /*padding-top: 1%;*/
+  padding-bottom: 1%;
+  padding-right: 3%;
+  padding-left: 3%;
+  margin: 0%;
+}
+
+ul{
+  padding-left: 6%;
+  padding-top: 0%;
+  margin: 0%;
+  padding-bottom: 1%;
+}
+
+#checkboxes
+{
+  text-align: center;
+  font-weight: bold;
+}
+
+
+path { 
+    stroke: steelblue;
+    stroke-width: 3;
+    fill: none;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #5e6472;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+    color: #5e6472;
+}
+.axis text{
+    fill: #5e6472;
+}
+.legend {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: justify;
+    display: flex;
+} 
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+svg{
+  display: block;
+  margin: 0 auto;
+}
+
+#lineChart{
+  padding: 2%;
+}
+
+#circlesymb{
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  background: #5e6472;
+  display: inline-block;
+}
+
+#plussymb{
+  width: 2px;
+  height: 10px;
+  position: relative;
+  background: #5e6472;
+  -webkit-text-stroke: 4px #5e6472;
+  display: inline-block;
+}
+#plussymb:after { 
+  background: #5e6472;
+   content: ""; height: 2px; 
+   left: -4px; 
+   position: absolute; 
+   top: 4px; 
+   width: 10px; }
