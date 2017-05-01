@@ -95,8 +95,12 @@ svg{
 }
 #plussymb:after { 
   background: #5e6472;
-   content: ""; height: 2px; 
-   left: -4px; 
-   position: absolute; 
-   top: 4px; 
-   width: 10px; }
+  content: ""; height: 2px; 
+  left: -4px; 
+  position: absolute; 
+  top: 4px; 
+  width: 10px; }
+
+#wordcloudChart{
+  width: 50%;
+}
