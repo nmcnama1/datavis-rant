@@ -21,7 +21,6 @@ globalData["Otres_Male"] = [];
 globalData["Otres_Female"] = [];
 var thisWillDie = {Antioquia:true, Bogota:true, Cafetero:true, Caribe:true, Centro:true, Oriento:true, Otres:true, Pacifica:true, Otro:true, Male:true, Female:true};
 
-
 scatterPlot
   .outerWidth(600)
   .outerHeight(600)
@@ -74,103 +73,54 @@ function processData(entry) {
 }
 
 
-d3.csv("FINALLY.csv", numberify, function (data){
+d3.csv("twitter_data.csv", numberify, function (data){
   data.forEach(processData);
-  d3.select("#chart")
+  d3.select("#scatterplotChart")
     .datum(data)
     .call(scatterPlot);
   processData(data);
 });
 
-window.onkeypress = function(event) {
-  switch(event.which) {
-    case 97:
-        thisWillDie.Antioquia = !thisWillDie.Antioquia;
-        update();
-        break;
-    case 98:
-        thisWillDie.Bogota = !thisWillDie.Bogota;
-        update();
-        break;
-    case 99:
-        thisWillDie.Cafetero = !thisWillDie.Cafetero;
-        update();
-        break;
-    case 100:
-        thisWillDie.Caribe = !thisWillDie.Caribe;
-        update();
-        break;
-    case 101:
-        thisWillDie.Centro = !thisWillDie.Centro;
-        update();
-        break;
-    case 102:
-        thisWillDie.Oriento = !thisWillDie.Oriento;
-        update();
-        break;
-    case 103:
-        thisWillDie.Otres = !thisWillDie.Otres;
-        update();
-        break;
-    case 104:
-        thisWillDie.Pacifica = !thisWillDie.Pacifica;
-        update();
-        break;
-    case 105:
-        thisWillDie.Otro = !thisWillDie.Otro;
-        update();
-        break;
-    case 106:
-        thisWillDie.Male = !thisWillDie.Male;
-        update();
-        break;
-    case 107:
-        thisWillDie.Female = !thisWillDie.Female;
-        update();
-        break;
-    default:
-        console.log('lol good try');
-  }
-}
-function update() {
+function updateScatterData() {
+    updateLineData();
     data = [];
-    if (thisWillDie.Male) {
+    if (d3.select("#checkMale").property("checked")) {
       data = addLocations("Male", data)
     }
-    if (thisWillDie.Female) {
+    if (d3.select("#checkFemale").property("checked")) {
       data = addLocations("Female", data)
     }
-    d3.select("#chart")
+    d3.select("#scatterplotChart")
       .datum(data)
       .call(scatterPlot);
 }
 
 function addLocations(gender, data) {
-  if (thisWillDie.Antioquia) {
+  if (d3.select("#checkAntioquia").property("checked")) {
     data = data.concat(globalData["Antioquia_"+gender]);
   }
-  if (thisWillDie.Bogota) {
+  if (d3.select("#checkBogota").property("checked")) {
     data = data.concat(globalData["Bogota_"+gender]);
   }
-  if (thisWillDie.Cafetero) {
+  if (d3.select("#checkCafetero").property("checked")) {
     data = data.concat(globalData["Cafetero_"+gender]);
   }
-  if (thisWillDie.Caribe) {
+  if (d3.select("#checkCaribe").property("checked")) {
     data = data.concat(globalData["Caribe_"+gender]);
   }
-  if (thisWillDie.Centro) {
+  if (d3.select("#checkCentro").property("checked")) {
     data = data.concat(globalData["Centro_"+gender]);
   }
-  if (thisWillDie.Oriento) {
+  if (d3.select("#checkOriento").property("checked")) {
     data = data.concat(globalData["Oriento_"+gender]);
   }
-  if (thisWillDie.Otres) {
+  if (d3.select("#checkOtres").property("checked")) {
     data = data.concat(globalData["Otres_"+gender]);
   }
-  if (thisWillDie.Pacifica) {
+  if (d3.select("#checkPacifica").property("checked")) {
     data = data.concat(globalData["Pacifica_"+gender]);
   }
-  if (thisWillDie.Otro) {
+  if (d3.select("#checkOtro").property("checked")) {
     data = data.concat(globalData["Otro_"+gender]);
   }
   return data;

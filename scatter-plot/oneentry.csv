@@ -1,0 +1,2 @@
+user_id,user_gender,user_location,tweet_id,tweet_timestamp,tweet_text,tweet_hashtag,tweet_polarity_score,tweet_sentiment_score,user_polarity_score,user_sentiment_score,user_follower_count,user_friends_count,user_retweet_count
+7.42472E+17,Male,"Caracas, Venezuela",7.7553E+17,9/12/12,"rt @orlandofblanco: dile #noalasfarc ñ @paolaholguin el 2 de octubre  marcamos no a los acuerdos farc-santos, x colombia @alvarouribevel @c…",noalasfarc,0,-1,0.8,0.8,312,3384,50

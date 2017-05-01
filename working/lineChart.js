@@ -274,19 +274,9 @@ mouseG.append('svg:rect')
     });
  
 });
-d3.select("#checkFemale").on("change", updateData);
-d3.select("#checkMale").on("change", updateData);
-d3.select("#checkAntioquia").on("change", updateData);
-d3.select("#checkBogota").on("change", updateData);
-d3.select("#checkCafetero").on("change", updateData);
-d3.select("#checkCaribe").on("change", updateData);
-d3.select("#checkCentro").on("change", updateData);
-d3.select("#checkOriento").on("change", updateData);
-d3.select("#checkOtres").on("change", updateData);
-d3.select("#checkPacifica").on("change", updateData);
-d3.select("#checkOtro").on("change", updateData);
 
-function updateData(){
+
+function updateLineData(){
     d3.csv('twitter_data.csv', function(error, data) {
     data.forEach(function (d) {
         //d.tweet_timestamp = parseDate(d.tweet_timestamp);

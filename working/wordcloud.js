@@ -23,17 +23,17 @@ window.onload = function(){
                 mywc = wordCloud('#wordcloudChart', hashObjs);
             });
 
-        d3.select("#checkFemale").on("change", updateData);
-        d3.select("#checkMale").on("change", updateData);
-        d3.select("#checkAntioquia").on("change", updateData);
-        d3.select("#checkBogota").on("change", updateData);
-        d3.select("#checkCafetero").on("change", updateData);
-        d3.select("#checkCaribe").on("change", updateData);
-        d3.select("#checkCentro").on("change", updateData);
-        d3.select("#checkOriento").on("change", updateData);
-        d3.select("#checkOtres").on("change", updateData);
-        d3.select("#checkPacifica").on("change", updateData);
-        d3.select("#checkOtro").on("change", updateData);
+        d3.select("#checkFemale").on("change", updateCloudData);
+        d3.select("#checkMale").on("change", updateCloudData);
+        d3.select("#checkAntioquia").on("change", updateCloudData);
+        d3.select("#checkBogota").on("change", updateCloudData);
+        d3.select("#checkCafetero").on("change", updateCloudData);
+        d3.select("#checkCaribe").on("change", updateCloudData);
+        d3.select("#checkCentro").on("change", updateCloudData);
+        d3.select("#checkOriento").on("change", updateCloudData);
+        d3.select("#checkOtres").on("change", updateCloudData);
+        d3.select("#checkPacifica").on("change", updateCloudData);
+        d3.select("#checkOtro").on("change", updateCloudData);
 
         function mydataisready(){
 
@@ -112,7 +112,8 @@ window.onload = function(){
           };
         }
 
-        function updateData(){
+        function updateCloudData(){
+            updateScatterData();
             var genders = [];
             var locations = [];
 

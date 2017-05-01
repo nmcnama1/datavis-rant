@@ -39,7 +39,7 @@ ul{
 }
 
 
-path { 
+#lineChart path { 
     stroke: steelblue;
     stroke-width: 3;
     fill: none;

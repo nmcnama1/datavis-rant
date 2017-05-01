@@ -6,7 +6,6 @@ function ScatterPlot(){
 
   var xColumn = "No X column configured";
   var yColumn = "No Y column configured";
-  var rColumn = "No radius column configured";
   var colorColumn = "No color column configured";
   var colorRange = d3.scale.category10().range();
   var shapeRange = d3.scale.category10().range();
@@ -20,7 +19,6 @@ function ScatterPlot(){
 
   var xScale = d3.scale.linear();
   var yScale = d3.scale.linear();
-  var rScale = d3.scale.linear();
   var shapeScale = d3.scale.ordinal();
   function colorScale(user_location) {
     switch(user_location) {
@@ -98,7 +96,7 @@ function ScatterPlot(){
       svg
         .append("text")
           .attr("id", "negLabel")
-          .attr("class", "axislabel")
+          .attr("class", "axis")
           .text("Negative");
       svg
         .select("#negLabel")
@@ -214,11 +212,6 @@ function ScatterPlot(){
     return chart;
   };
 
-  chart.rColumn = function(_) {
-    if (!arguments.length) return rColumn;
-    rColumn = _;
-    return chart;
-  };
 
   chart.colorRange = function(_) {
     if (!arguments.length) return colorRange;
