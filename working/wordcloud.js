@@ -9,7 +9,7 @@ window.onload = function(){
           
           console.log("working..");
 
-          d3.csv("twitter.csv", function(error, data) {
+          d3.csv("twitter_data.csv", function(error, data) {
 
               data.forEach(function(d){
                 var h = d.tweet_hashtag;
@@ -152,7 +152,7 @@ window.onload = function(){
 
             console.log("updating");
 
-            d3.csv("twitter.csv", function(error, data) {
+            d3.csv("twitter_data.csv", function(error, data) {
 
               var new_hashes = "";
               var newObjs = [];
