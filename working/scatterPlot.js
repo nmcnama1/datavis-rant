@@ -86,22 +86,28 @@ function ScatterPlot(){
           .style("text-anchor", "middle");
 
       svg
+              .append("g")
+          .attr("class", "y axis")
         .append("text")
           .attr("id", "agLabel")
           .attr("class", "axislabel")
+          .style("text-anchor", "middle")
           .text("Against");
       svg
         .select("#agLabel")
-        .attr("transform", "translate(" + (innerWidth/2+margin.left-elWidth("agLabel")/2) +", " + (innerHeight+margin.top+10+elHeight("agLabel")/2) + ")")
+        .attr("transform", "translate(" + (innerWidth/2+margin.left) +", " + (innerHeight+margin.top+10+elHeight("agLabel")/2) + ")")
 
-      svg
+      gEnter
+                    .append("g")
+          .attr("class", "x axis")
         .append("text")
           .attr("id", "negLabel")
           .attr("class", "axis")
+          .style("text-anchor", "middle")
           .text("Negative");
-      svg
+      gEnter 
         .select("#negLabel")
-        .attr("transform", "translate(" + (margin.left-elHeight("negLabel")/2) +", " + (margin.top+innerHeight/2+elWidth("negLabel")/2) + ") rotate(-90)")
+        .attr("transform", "translate(" + (-elHeight("negLabel")/2) +", " + (innerHeight/2) + ") rotate(-90)")
 
       function elWidth(elID) {
         return document.getElementById(elID).getBoundingClientRect().width;
@@ -178,11 +184,11 @@ function ScatterPlot(){
              .attr("y2", innerHeight)
              .attr("stroke-width", 2)
              .attr("stroke", "#d3d3d3");
-        });
-  /*      .on("mouseout", function() {
+        })
+        .on("mouseout", function() {
             tooltip_div.style("opacity", 0);	
             d3.selectAll(".crosshair").remove();
-		    });*/
+		    });
       points.exit()/*.transition().duration(1000).style("opacity", 0)*/.remove();
       
     });
