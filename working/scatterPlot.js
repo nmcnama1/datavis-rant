@@ -67,9 +67,11 @@ function ScatterPlot(){
     yAxis.ticks(yTicks);
 
     selection.each(function (data) {
-
+      console.log(this);
       var svg = d3.select(this).selectAll("svg").data([data]);
+      console.log(svg);
       var gEnter = svg.enter().append("svg").append("g");
+      console.log(gEnter);
       var g = svg.select("g");
       var points = g.selectAll(".point").data(data);
       var tooltip_div = d3.select("body").append("div")	
@@ -168,20 +170,20 @@ function ScatterPlot(){
             tooltip_div	.html("User Profile Info:<br/>User ID: "+d.user_id+"<br/>Gender: "+d.user_gender+ "<br/>Region: "+d.user_location+"<br/>Sentiment: "+parseFloat(Math.round(d.user_sentiment_score * 100) / 100).toFixed(4)+"<br/>Polarity: "+parseFloat(Math.round(d.user_polarity_score * 100) / 100).toFixed(4)+"<br/>Followers: "+d.user_follower_count+"<br/>Following: "+d.user_friends_count)	
                 .style("left", (d3.event.pageX) + "px")		
                 .style("top", (d3.event.pageY - 28) + "px");	
-             gEnter.append("line")
+             svg.append("line")
              .attr("class", "crosshair")
-             .attr("x1", 0)
-             .attr("x2", innerWidth)
-             .attr("y1", yScale(d.user_polarity_score))
-             .attr("y2", yScale(d.user_polarity_score))
+             .attr("x1", margin.left)
+             .attr("x2", innerWidth+margin.left)
+             .attr("y1", yScale(d.user_polarity_score)+margin.top)
+             .attr("y2", yScale(d.user_polarity_score)+margin.top)
              .attr("stroke-width", 2)
              .attr("stroke", "#d3d3d3");
-             gEnter.append("line")
+             svg.append("line")
              .attr("class", "crosshair")
-             .attr("x1", xScale(d.user_sentiment_score))
-             .attr("x2", xScale(d.user_sentiment_score))
-             .attr("y1", 0)
-             .attr("y2", innerHeight)
+             .attr("x1", xScale(d.user_sentiment_score)+margin.left)
+             .attr("x2", xScale(d.user_sentiment_score)+margin.left)
+             .attr("y1", margin.top)
+             .attr("y2", innerHeight+margin.top)
              .attr("stroke-width", 2)
              .attr("stroke", "#d3d3d3");
         })
