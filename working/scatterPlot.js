@@ -45,12 +45,12 @@ function ScatterPlot(){
 
 
   var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
-    .tickFormat(d3.format("s"))
+ //   .tickFormat(d3.format("s"))
     .outerTickSize(0);
 //  var xTicks = 5;
 
   var yAxis = d3.svg.axis().scale(yScale).orient("right")
-    .tickFormat(d3.format("s"))
+  //  .tickFormat(d3.format("s"))
     .outerTickSize(0);
   //var yTicks = 5;
 
@@ -157,8 +157,9 @@ function ScatterPlot(){
         .attr("d", d3.svg.symbol().type(function (d){ return  shapeScale(d[shapeColumn]); }))
 
         .on("mouseover", function(d) {
+            console.log(gEnter);
             tooltip_div.style("opacity", .9);
-            tooltip_div	.html("User ID: "+d.user_id+"<br/>Gender: "+d.user_gender+ "<br/>Region: "+d.user_location+"<br/>Sentiment: "+parseFloat(Math.round(d.user_sentiment_score * 100) / 100).toFixed(4)+"<br/>Polarity: "+parseFloat(Math.round(d.user_polarity_score * 100) / 100).toFixed(4)+"<br/>Followers: "+d.user_follower_count+"<br/>Following: "+d.user_friends_count)	
+            tooltip_div	.html("User Profile Info:<br/>User ID: "+d.user_id+"<br/>Gender: "+d.user_gender+ "<br/>Region: "+d.user_location+"<br/>Sentiment: "+parseFloat(Math.round(d.user_sentiment_score * 100) / 100).toFixed(4)+"<br/>Polarity: "+parseFloat(Math.round(d.user_polarity_score * 100) / 100).toFixed(4)+"<br/>Followers: "+d.user_follower_count+"<br/>Following: "+d.user_friends_count)	
                 .style("left", (d3.event.pageX) + "px")		
                 .style("top", (d3.event.pageY - 28) + "px");	
              gEnter.append("line")
@@ -177,11 +178,11 @@ function ScatterPlot(){
              .attr("y2", innerHeight)
              .attr("stroke-width", 2)
              .attr("stroke", "#d3d3d3");
-        })
-        .on("mouseout", function() {
+        });
+  /*      .on("mouseout", function() {
             tooltip_div.style("opacity", 0);	
             d3.selectAll(".crosshair").remove();
-		    });
+		    });*/
       points.exit()/*.transition().duration(1000).style("opacity", 0)*/.remove();
       
     });
