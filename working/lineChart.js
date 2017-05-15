@@ -122,6 +122,7 @@ d3.csv('twitter_data.csv', function(error, data) {
             //.attr("y", height + (margin.bottom/2)+ 5)         // *******
             .attr("x", width)// - margin.right)
             .attr("y", i*20)
+            .attr("id", 'legend'+d.key.replace(/\s+/g, ''))
             .attr("class", "legend")    // style the legend   // *******
             .style("fill", function() { // dynamic colours    // *******
                 return d.color = color(d.key); })             // *******
@@ -130,9 +131,14 @@ d3.csv('twitter_data.csv', function(error, data) {
                 newOpacity = active ? 0 : 1;             // ************
                 // Hide or show the elements based on the ID
                 d3.select("#tag"+d.key.replace(/\s+/g, '')) // *********
-                    .transition().duration(200)          // ************
+                    .transition().duration(200)          // ************s
                     .style("opacity", newOpacity);       // ************
                 // Update whether or not the elements are active
+                if (active == false){
+                    var newColor = color(d.key);
+                } else { var newColor = '#d9dce2';}
+                //console.log(newColor);
+                d3.select('#legend'+d.key.replace(/\s+/g, '')).style("fill", newColor);
                 d.active = active;    
             })
             .text("#"+d.key);

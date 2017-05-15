@@ -11,9 +11,9 @@
 <body>
 <h1>Peace in 140 Characters</h1>
 <p>The Colombian Peace Process has been the response to the Colombian Conflict that has been occgirring over the last half century in the South American country. Starting with the formation of the Revolutionary Armed Forces of Colombia (FARC) in 1964, armed warfare has taken place between the Colombian government and several left-wing guerrilla groups such as FARC. In November of 2016, the Colombian Conflict was brought to a close with the passage of the Peace Accord. However, its path to ratification included a failed referendum where the electorate voted at 50.2% to reject the agreement and 49.8% to ratify it. Rather than facing a second referendum after its subsequent revision, the deal was sent to Congress where it was ratified by both houses. </p>
-<p>Particularly given the lack of a second referendum to pass the accord, questions have been raised about how well the interests and wishes of the Colombian people were served during the peace process. This type of speculation relating to political actions is not unique. The conflict itself was long and complex, with a large number of parties and nuanced motives involved. Thus, understanding public sentiment and polarization over time as the events unfolded was a convoluted and perplexing endeavor. Particularly in politics, and where conflict and elections are involved, an accurate and detailed understanding of people’s current thoughts can be incredibly valuable. This can help policymakers best cater to the needs and wishes of their constituents, keep governments accountable, give predictive power to election analysts, and illuminate particular regions or demographics whose values and opinions may vary from those of the majority. To these ends, a detailed visualization of population opinions is beneficial and useful in many political landscapes and timelines. This Colombian Peace Process visulization's data is from Twitter, a social media platform where people can share what they are feeling or thinking up to 140 characters at a time. </p>
+<p>Particularly given the lack of a second referendum to pass the accord, questions have been raised about how well the interests and wishes of the Colombian people were served during the peace process. This type of speculation relating to political actions is not unique. The conflict itself was long and complex, with a large number of parties and nuanced motives involved. Thus, understanding public sentiment and polarization over time as the events unfolded was a convoluted and perplexing endeavor. Particularly in politics, and where conflict and elections are involved, an accurate and detailed understanding of people’s current thoughts can be incredibly valuable. This can help policymakers best cater to the needs and wishes of their constituents, keep governments accountable, give predictive power to election analysts, and illuminate particular regions or demographics whose values and opinions may vary from those of the majority. To these ends, a detailed visualization of population opinions is beneficial and useful in many political landscapes and timelines. This Colombian Peace Process visualization's data is from Twitter, a social media platform where people can share what they are feeling or thinking up to 140 characters at a time. </p>
 <p>
-This interactive visulization is comprised of three charts: quadrant plot of user sentiment (positive, negative) and user polarization (for or against referendum), hashtag trend timeline, and hashtag word cloud.  Note, the tweet text is in Spanish, thus so are portions of the visulization. The charts are interactive and can be filtered, using the following check boxes, by user gender and user location. We hope you enjoy this visulization and gain great insight!
+This interactive visualization is comprised of three charts: quadrant plot of user sentiment (positive, negative) and user polarization (for or against referendum), hashtag trend timeline, and hashtag word cloud.  Note, the tweet text is in Spanish, thus so are portions of the visualization. The charts are interactive and can be filtered, using the following check boxes, by user gender and user location. We hope you enjoy this visualization and gain great insight!
 </p>
 <div id="checkboxes">
 Gender</br>
@@ -58,12 +58,30 @@ Gender</br>
 <li>What are the trends between the genders?</li>
 </ul>
 <h3>Elements of Design</h3>
-<p>Coming in version 2!</p>
+<p>This visualization is compromised of three charts, that work together.  They are all controlled by one legend, that includes checkboxes for filtering on gender or location, as seen in Figure 1.  The mark used to encode gender is shown in the legend.  The color used to encode location is also shown in this legend. Combining the filterig and scatterplot legend simplifies the design and makes good use of space. </p>
+<p style="text-align:center;"><figure><img src="img/legend.jpg"><figcaption>Figure 1</figcaption></figure></p>
+<p>The scatterplot of polarity and sentiment in the main chart of the visualization, seen in Figure 2.  Each point on the chart was encoded with a strong mark, a point. The sentiment and polarity of the user was encoded by position on the x and y axes, respecctivly.  This was an approproate and effective way to encode qualitative values.  The gender and location are respectively encoded using shapes and divergent color hues.  These were effective choices for encoding the categorical attributes. Note, a cross and circle were chosen to represent females and males.  This differs from the original design of using cirlces and squares.  However, user feedback revealed that more diverse marks would lead to enhanced clarity.  Also, in response to feedback, axes labels were changed to for and against and positive and negative rather than polarity and sentiment.  These words mean more to the average person.<p>
+<p style="text-align:center;"><figure><img src="img/scatterplot.jpg"><figcaption>Figure 2</figcaption></figure></p>
+<p>If you notice, the scatterplot is densly populated.  We chose this plot because of user needs to visually identify clusters.  Thus, filtering was a rather important feature.  Figure 3 shows filtering in action. Note, the filtering also updates the word cloud and hashtag trend timeline. </p>
+<p style="text-align:center;"><figure><img src="img/filteredscatter.jpg"><figcaption>Figure 3</figcaption></figure></p>
+<p>Additional attrributes of each user are displayed on mouseover of the user's point. This was a useful feature as it allowed a lot of data to be show on demand. Also, cross hatching on mouseover allows for refined lookup of sentiment and polarity.  This is shown in Figure 4.</p>
+<p style="text-align:center;"><figure><img src="img/crossnmouse.jpg"><figcaption>Figure 4</figcaption></figure></p>
+<p>The next chart in the visualization is the word cloud, shown in Figure 5. The words in the cloud are all hashtags present in the tweet text. As customary for word clouds, the frequency of the hashtag is encoded by the size of the word. As prevously mentioned, the word cloud updates based on the visualizations filtering selections. Based on user feedback, the color encoding demonstrated in initial designs was deemed repeative and thus eliminated from the final design for simplicity. The word cloud is a useful addition to the visualization by giving meaning to the numeric sentiment and polarity scores. For instance, if the user has filtered to a realitively negative cluster, the word cloud will show the negative hashtags associated.</p>
+<p style="text-align:center;"><figure><img src="img/cloud.jpeg"><figcaption>Figure 5</figcaption></figure></p>
+<p>Lastly, the visualization features a timeline of the hashtags trends, shown in Figure 6. The ten hashtags were identified by the user as ten important ones that represent the Columbia Peace Process. The position of the line encodes the frequency of the hashtag on a particular date, as appropriate for line charts. The color of the line encodes the particular hashtag.  This divergent scale was an appropriate decision for categorical attributes.</p>
+<p style="text-align:center;"><figure><img src="img/linechart.jpg"><figcaption>Figure 6</figcaption></figure></p>
+<p>In addition to updating and rescaling due to filtering on the entire visualization, the line chart can also be filtered by removing line.  This is done by clicking the hashtag in the legend. The legend entry becomes grey if the line is not displayed.  This feature is shown in Figure 7. </p>
+<p style="text-align:center;"><figure><img src="img/filteredlinechart.jpg"><figcaption>Figure 7</figcaption></figure></p>
+<p>Mousover on the line chart displays a verticle marker and frequency counts for readability. As commented on in user studies, there is some congestion close to 0.  Unfortunately, we did not have time to correct this.</p>
+
 <h3>Interesting Insights</h3>
-<p>More coming in version 2!</p>
-<p><strong>Quadrant Plot of Sentiment and Polarization</strong></p>
+<p><strong>Quadrant Plot</strong></p>
 <ul>
-<li>Nancy add stuff!</li>
+<li>There is no apparent common polarity or sentiment based on gender alone.</li>
+<li>When filtering on the location Pacifica, there are many that are strongly for and strongly against the accord.  However, there are a range from 0 to -1 in the two against quadrants.  This leads us to believe that something caused some who were strongly against, to start trending towards support of the accord.</li>
+<li>When filtering on the location Antioquia or Cafetero, there is more positive sentiment.</li>
+<li>Some regions, like Bogota, have a wide range of polarity and sentiment</li>
+
 </ul>
 <p><strong>Hashtag Trend Timeline</strong></p>
 <ul>
@@ -71,19 +89,23 @@ Gender</br>
 </ul>
 <p><strong>Hashtag Word Cloud</strong></p>
 <ul>
-<li>Trending hashtags are generally the same or similar for males and females, and location based. However, some regions have trending hashtags that are not immediately apparent when looking at the general population. </br>
-A few regions have "encartagenadecimosno" which roughly translate into "in cartagena we say no". You can see this in the Antioquia and Caribe region. A few other regions also have "sialapaz" as one of their most popular hashtag. Some other regions have more neutral terms like "acuerdodepaz" and slightly positive terms like "firmadelapaz" which means "peace agreement" and "sign the peace". Overall the most popular two hashtags of all locations and gender is neutral, "Colombia" and "farc".</li>
+<li>Trending hashtags are generally the same or similar for males and females, and location based. However, some regions have trending hashtags that are not immediately apparent when looking at the general population. None of the location specific hashtags are apparent on the hashtag trend timeline.</li>
+<li>A few regions have "encartagenadecimosno" which roughly translate into "in cartagena we say no". You can see this in the Antioquia and Caribe region. A few other regions also have "sialapaz" as one of their most popular hashtag. Some other regions have more neutral terms like "acuerdodepaz" and slightly positive terms like "firmadelapaz" which means "peace agreement" and "sign the peace". Overall the most popular two hashtags of all locations and gender is neutral, "Colombia" and "farc".</li>
 </ul>
-<h3>User Studies</h3>
-<p>Coming in version 2!</p>
 <h3>Further Work</h3>
-<p>There are a few known bugs that exist in this initial version.  We hope to make strides in addressing at least some before the release of version 2. The known bugs are:</p>
+<p>There are a few known bugs or features that user studies indicated weaknesses that exist in this version. Given more time, we would like to address these bugs.  The known bugs are:</p>
 <ul>
-	<li>Mouseover in hashtag trend timeline shows values of inactive lines.</li>
-	<li>Mouseover is congested near 0.</li>
-	<li>Mouseover show only display values at actual dates and not derive values at intermediate points between dates.</li>
-	<li>Nancy bugs.</li>
-	<li>Whitney bugs.</li>
+	<li>Mouseover in hashtag trend timeline shows values of inactive lines in the line chart.</li>
+	<li>Mouseover is congested near 0 in the line chart.</li>
+	<li>Mouseover in line chart shows only display values at actual dates and not derive values at intermediate points between dates.</li>
+	<li>Overall, the visualization is slow to load.</li>
+	<li>Mouseover in the scattterplot could be more responsive.</li>
 </ul>
-<p>In addition to fixing the know bugs, further work on this project is extensive.  </p>
+<p>In addition to fixing the know bugs, further work on this project is extensive, including:  </p>
+<ul>
+	<li>Increased user studies, particularly with spanish speakers.</li>
+	<li>Generalization of code to work for any twitter data, not just that associated with the Columbia Peace Process</li>
+	<li>Expansion of visualization into full featured workbench that encodes more of the data and elaborates on user demographics.</li>
+	<li>Create enhanced user profile that allows you to view tweet text.</li>
+</ul>
 </body>
